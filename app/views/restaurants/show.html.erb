@@ -1,0 +1,59 @@
+
+<%= link_to '<- Back', restaurants_path, class: 'btn btn-light'  %>
+<div class="container mr-md-3 mt-3" >
+<div class="d-flex mr-2 pr-3 gap-3">
+      <div class="card">
+        <img class="card-img-top" src=<%="http://source.unsplash.com/featured/500x333/?#{@restaurant.category.downcase}"%>  alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"><%= @restaurant.name %></h5>
+          <p class="card-text"><%= @restaurant.category %></p>
+          <p class="card-text"><%= @restaurant.address %></p>
+          <p class="card-text"><%= @restaurant.phone_number %></p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+
+    </div>
+
+    <br>
+
+
+
+      <div class="card flex-grow-1 ml-2 pl-3">
+      <div class="card-header">
+        <strong>Reviews</strong>
+      </div>
+      <div class="card-body">
+        <% @restaurant.reviews.each do |review| %>
+
+              <div class="card-title" class="d-flex">
+              <% review.rating.times do %>
+                <i class="fas fa-star"></i>
+              <% end %>
+              <% (5 - review.rating).times do %>
+                <i class="far fa-star"></i>
+              <% end %>
+            </div>
+
+
+
+          <p class="card-text"><%= review.content %></p>
+        <% end %>
+        <%= link_to "Create new Rating", new_restaurant_review_path(@restaurant), class: 'btn btn-dark' %>
+
+      </div>
+      <div class="card-footer text-muted">
+        Support this Restaurant!
+      </div>
+    </div>
+
+    </div>
+
+<div>
+
+
+
+
+  </div>
+</div>
+
+</div>
